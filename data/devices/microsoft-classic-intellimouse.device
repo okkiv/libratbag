@@ -1,0 +1,9 @@
+[Device]
+Name=Microsoft Classic Intellimouse
+DeviceMatch=usb:045e:0823
+Driver=microsoft
+
+[Driver/microsoft]
+Buttons=5
+Leds=1
+DpiRange=400:3200@200
