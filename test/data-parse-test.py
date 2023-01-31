@@ -111,7 +111,7 @@ def check_dpi_range_str(string: str):
 
     assert(min >= 0 and min <= 400)
     assert(max >= 2000 and max <= 36000)
-    assert(steps > 0 and steps <= 100)
+    assert(steps > 0 and steps <= 200)
 
     if int(steps) == steps:
         steps = int(steps)
@@ -224,6 +224,22 @@ def check_section_hidpp20(section: configparser.SectionProxy):
         pass
 
 
+def check_section_microsoft(section: configparser.SectionProxy):
+    permitted_keys = (
+        'Buttons',
+        'DpiRange',
+        'Leds',
+    )
+    for key in section.keys():
+        assertIn(key, permitted_keys)
+
+    try:
+        check_dpi_range_str(section['DpiRange'])
+        assertNotIn('DpiList', section.keys())
+    except KeyError:
+        pass
+
+    
 def check_section_steelseries(section: configparser.SectionProxy):
     permitted_keys = (
         'Buttons',
@@ -272,6 +288,10 @@ def check_section_driver(driver: str, section: configparser.SectionProxy):
         check_section_hidpp20(section)
         return
 
+    if driver == 'microsoft':
+        check_section_microsoft(section)
+        return
+    
     if driver == 'steelseries':
         check_section_steelseries(section)
         return
