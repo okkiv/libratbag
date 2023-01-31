@@ -189,6 +189,7 @@ src_libratbag = [
 	'src/driver-roccat-kone-emp.c',
 	'src/driver-roccat-kone-pure.c',
 	'src/driver-gskill.c',
+	'src/driver-microsoft.c',
 	'src/driver-openinput.c',
 	'src/driver-steelseries.c',
 	'src/driver-steelseries.h',
