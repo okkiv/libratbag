@@ -62,6 +62,7 @@ enum driver {
 	SINOWEALTH,
 	SINOWEALTH_NUBWO,
 	OPENINPUT,
+	MICROSOFT,
 };
 
 struct data_hidpp20 {
